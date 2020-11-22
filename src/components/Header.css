@@ -1,0 +1,36 @@
+.main-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+}
+
+.logo img {
+  width: 100%;
+}
+
+.main-nav {
+  width: 130px;
+  max-width: 60%;
+}
+
+.main-nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-link,
+.nav-link a,
+.nav-link a:visited {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1f1d8d;
+}

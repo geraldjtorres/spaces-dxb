@@ -1,13 +1,14 @@
-import './App.css'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import About from './pages/About'
+import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
+import Header from './components/Header';
 
 function App() {
   return (
     <Router>
       <div className='App'>
-        <p>Header goes here</p>
+        <Header />
 
         <Switch>
           <Route path='/about'>
@@ -20,7 +21,7 @@ function App() {
         </Switch>
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
