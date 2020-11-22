@@ -1,0 +1,12 @@
+.Home {
+}
+.heading > h1 {
+  font-weight: 400;
+  color: #1f1d8d;
+}
+
+.heading > p {
+  color: #868e96;
+  font-size: 14px;
+  margin-top: 14px;
+}
