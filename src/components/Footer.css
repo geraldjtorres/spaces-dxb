@@ -1,0 +1,43 @@
+.main-footer {
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 36px;
+  padding: 40px 16px;
+}
+
+.main-footer ul {
+  list-style: none;
+  display: flex;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.footer-link {
+  margin-right: 16px;
+}
+
+.footer-link a {
+  text-decoration: none;
+  color: #333;
+}
+
+.footer-link a:visited {
+  color: #333;
+}
+
+.footer-logo {
+  width: 32px;
+  height: 32px;
+  margin-right: 22px;
+}
+
+.footer-logo img {
+  display: block;
+  width: 100%;
+}
+
+.main-footer span {
+  font-size: 12px;
+  color: #868e96;
+}
