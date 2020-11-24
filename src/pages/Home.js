@@ -1,37 +1,31 @@
-import React from 'react';
-import './Home.css';
-import Card from '../components/Card';
-import faker from 'faker';
-import Searchbar from '../components/Searchbar';
-import Footer from '../components/Footer';
+import React, { useState, useEffect } from 'react'
+import './Home.css'
+import Card from '../components/Card'
+import faker from 'faker'
+import Searchbar from '../components/Searchbar'
+import Footer from '../components/Footer'
+
+import axios from '../axios'
+import { useStateValue } from '../StateProvider'
 
 function Home() {
-  const workspaces = [
-    {
-      title: 'A4 Space',
-      rating: 4.5,
-      internetSpeed: 100,
-      type: 'cafe',
-      image: faker.image.technics(),
-      sockets: 'Some sockets',
-    },
-    {
-      title: 'A4 Space',
-      rating: 4.5,
-      internetSpeed: 100,
-      type: 'cafe',
-      image: faker.image.business(),
-      sockets: 'Some sockets',
-    },
-    {
-      title: 'A4 Space',
-      rating: 4.5,
-      internetSpeed: 100,
-      type: 'cafe',
-      image: faker.image.city(),
-      sockets: 'Some sockets',
-    },
-  ];
+  const [{ spaces }, dispatch] = useStateValue()
+
+  useEffect(() => {
+    const getSpacesData = async () => {
+      const response = await axios({
+        method: 'get',
+        url: '/spaces'
+      })
+
+      dispatch({
+        type: 'GET_SPACES',
+        item: response.data
+      })
+    }
+
+    getSpacesData()
+  }, [])
 
   return (
     <div className='Home'>
@@ -47,23 +41,24 @@ function Home() {
         <Searchbar />
       </div>
       <div className='card-container'>
-        {workspaces.map((item) => {
+        {spaces.map(item => {
           return (
             <Card
-              image={item.image}
+              image={faker.image.technics()}
               rating={item.rating}
               internetSpeed={item.internetSpeed}
-              type={item.type}
-              title={item.title}
-              sockets={item.sockets}
+              type='Cafe'
+              title={item.Name}
+              sockets={item.sockets[0].name}
+              key={item.id}
             />
-          );
+          )
         })}
         {/* <Card title='SYNECHRON' />; */}
       </div>
       <Footer />
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home
