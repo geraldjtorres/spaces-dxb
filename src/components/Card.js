@@ -13,13 +13,13 @@ function Card(props) {
         <img src={props.image} alt='' />
       </div>
       <div className='card-content'>
-        <div className='title'>
-          <h2>{props.title}</h2>
+        <div className='heading'>
+          <h2 className='name'>{props.name}</h2>
           <div className='type'>
             <span>{props.type}</span>
           </div>
         </div>
-        <div className='specs'>
+        <div className='specs-row'>
           <div className='internet'>
             <img src={wifi} alt='' />
             <span className='bold'>{props.internetSpeed}</span>
@@ -30,7 +30,7 @@ function Card(props) {
             <span>{props.sockets}</span>
           </div>
         </div>
-        <div className='rating'>
+        <div className='rating-row'>
           <img src={star} alt='' />
           <span>{props.rating}/5</span>
         </div>

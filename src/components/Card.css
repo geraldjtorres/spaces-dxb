@@ -24,6 +24,7 @@
   width: 100%;
   height: 200px;
   border-radius: 8px 8px 0 0;
+  object-fit: cover;
 }
 
 .card-content {
@@ -33,7 +34,7 @@
   justify-content: space-between;
 }
 
-.card-content .title {
+.card-content .heading {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,14 +42,14 @@
   padding: 0 16px;
 }
 
-.card-content .title h2 {
+.card-content .heading .name {
   font-size: 22px;
   font-weight: 700;
   color: #1f1d8d;
   font-family: 'Archivo', sans-serif;
 }
 
-.card-content .title .type {
+.card-content .heading .type {
   font-size: 10px;
   font-weight: 500;
   color: #adb5bd;
@@ -56,18 +57,14 @@
   margin-top: 6px;
 }
 
-.card-content .title,
+.card-content .heading,
 .card-content .internet,
 .card-content .sockets,
-.card-content .rating {
+.card-content .rating-row {
   padding: 0 18px;
 }
 
-/* .card-content .specs {
-  border-bottom: 1px solid #e9ecef;
-  border-top: 1px solid #e9ecef;
-} */
-.card-content .rating {
+.card-content .rating-row {
   border-bottom: none;
   display: flex;
   height: 56px;
@@ -76,15 +73,15 @@
   padding-left: 19px;
 }
 
-.card-content .specs {
+.card-content .specs-row {
   display: flex;
   justify-content: space-between;
   height: 56px;
   align-items: center;
 }
 
-.card-content .specs .internet,
-.card-content .specs .sockets {
+.card-content .specs-row .internet,
+.card-content .specs-row .sockets {
   width: 50%;
   border: 1px solid #e9ecef;
   font-size: 16px;
@@ -94,20 +91,20 @@
   align-items: center;
 }
 
-.card-content .specs .internet {
+.card-content .specs-row .internet {
   border-left: none;
   border-right: none;
 }
 
-.card-content .specs .sockets {
+.card-content .specs-row .sockets {
   border-right: none;
 }
 
-.card-content .specs .internet .bold {
+.card-content .specs-row .internet .bold {
   font-weight: bold;
 }
 
-.card-content .specs img,
-.card-content .rating img {
+.card-content .specs-row img,
+.card-content .rating-row img {
   margin-right: 10px;
 }

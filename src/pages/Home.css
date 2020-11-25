@@ -14,9 +14,80 @@
   padding-bottom: 32px;
 }
 
+.add-btn {
+  display: none;
+}
+
 .card-container {
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media (min-width: 768px) {
+  .heading > h1,
+  .heading > p {
+    text-align: center;
+    width: 735px;
+    margin: auto;
+  }
+  .heading > h1 {
+    font-size: 44px;
+    font-weight: 800;
+  }
+
+  .heading > p {
+    font-size: 16px;
+    padding-top: 24px;
+  }
+
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(2, max(360px));
+    grid-gap: 8px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1336px) {
+  .heading > h1,
+  .heading > p {
+    text-align: left;
+    width: 654px;
+    margin: auto auto auto 0;
+  }
+  .heading > h1 {
+    font-size: 64px;
+    font-weight: 400;
+    padding-top: 155px;
+  }
+
+  .heading > p {
+    font-size: 18px;
+    padding-top: 24px;
+  }
+
+  .add-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1f1d8d;
+    color: #ffffff;
+    width: 128px;
+    height: 40px;
+    border-radius: 40px;
+  }
+
+  .add-btn a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(3, max(360px));
+    grid-gap: 32px;
+  }
 }

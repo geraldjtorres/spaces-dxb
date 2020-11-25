@@ -8,6 +8,19 @@
 .App {
   /* text-align: center; */
   padding: 24px;
-  max-width: 100%;
+  max-width: 1336px;
+  width: 100%;
   margin: auto;
+}
+
+@media (min-width: 768px) {
+  .App {
+    padding: 24px 24px;
+  }
+}
+
+@media (min-width: 1336px) {
+  .App {
+    padding: 44px 96px;
+  }
 }
