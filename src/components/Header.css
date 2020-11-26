@@ -42,6 +42,11 @@
 }
 
 @media (min-width: 1336px) {
+  .main-header {
+    padding: 56px 0;
+    height: 160px;
+  }
+
   .main-nav {
     width: 190px;
   }
@@ -50,7 +55,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-
     justify-content: center;
     width: 128px;
     height: 40px;

@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   margin: auto;
+  width: 100%;
 }
 
 .search-field {
@@ -61,12 +62,14 @@
 @media (min-width: 1336px) {
   .search {
     padding-top: 80px;
-    height: 120px;
+    height: 200px;
     padding-bottom: 80px;
+    margin: 0;
+    justify-content: space-between;
+    max-width: 100%;
   }
 
   .search-field {
-    /* margin: 80px auto 0 0; */
     width: 956px;
     max-width: 956px;
   }

@@ -1,7 +1,6 @@
 .card {
   width: 360px;
-  height: 390px;
-  margin-top: 20px;
+  height: 383px;
   display: flex;
   flex-direction: column;
   max-width: 100%;
@@ -30,7 +29,7 @@
 .card-content {
   display: flex;
   flex-direction: column;
-  height: 190px;
+  height: 183px;
   justify-content: space-between;
 }
 
@@ -39,29 +38,48 @@
   flex-direction: column;
   justify-content: center;
   height: 78px;
-  padding: 0 16px;
+  padding: 16px;
+  margin: 0 auto 0 0;
 }
 
 .card-content .heading .name {
   font-size: 22px;
+  line-height: 24px;
   font-weight: 700;
   color: #1f1d8d;
   font-family: 'Archivo', sans-serif;
 }
 
-.card-content .heading .type {
+.card-content .heading .info-row {
   font-size: 10px;
-  font-weight: 500;
+  font-weight: 600;
   color: #adb5bd;
   text-transform: uppercase;
-  margin-top: 6px;
+  line-height: 16px;
+  display: flex;
 }
 
-.card-content .heading,
-.card-content .internet,
-.card-content .sockets,
-.card-content .rating-row {
-  padding: 0 18px;
+.card-content .heading .info-row .row-item {
+  padding: 0 8px;
+  position: relative;
+}
+
+.row-item:before {
+  content: '';
+  height: 10px;
+  width: 1px;
+  background-color: #adb5bd;
+  position: absolute;
+  left: 0;
+  top: 3px;
+}
+
+.row-item:first-of-type:before {
+  display: none;
+}
+
+.card-content .heading .info-row .row-item:first-of-type {
+  padding: 0 8px 0 0;
 }
 
 .card-content .rating-row {
@@ -81,14 +99,29 @@
 }
 
 .card-content .specs-row .internet,
-.card-content .specs-row .sockets {
-  width: 50%;
+.card-content .specs-row .sockets,
+.card-content .specs-row .calls {
+  width: 33.3%;
   border: 1px solid #e9ecef;
   font-size: 16px;
   height: 100%;
-
+  flex-direction: column;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 12px;
+  padding-bottom: 10px;
+  padding-top: 8px;
+}
+
+.card-content .specs-row .calls {
+  padding-top: 6px;
+}
+
+.calls img {
+  width: 22px;
+  height: 22px;
 }
 
 .card-content .specs-row .internet {
@@ -104,7 +137,39 @@
   font-weight: bold;
 }
 
-.card-content .specs-row img,
+.card-content .password-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding: 0 16px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.card-content .password-row .password {
+  display: flex;
+}
+
+.card-content .password-row img {
+  margin-right: 6px;
+  display: block;
+}
+
+.card-content .password-row .copy {
+  font-size: 12px;
+  font-weight: 500;
+  color: #1f1d8d;
+  width: 74px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #e9ecef;
+  height: 100%;
+}
+
+/* .card-content .specs-row img,
 .card-content .rating-row img {
   margin-right: 10px;
-}
+} */

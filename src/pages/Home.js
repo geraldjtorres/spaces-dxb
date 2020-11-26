@@ -57,6 +57,7 @@ function Home() {
               name={item.name}
               sockets={item.sockets[0].name}
               key={item.id}
+              calls='Okay for calls'
             />
           );
         })}
