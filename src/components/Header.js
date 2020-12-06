@@ -10,7 +10,7 @@ function Header() {
       <nav className='main-nav'>
         <ul>
           <li className='nav-link'>
-            <Link to='/'>About</Link>
+            <Link to='/about'>About</Link>
           </li>
           <li className='nav-link add-space'>
             <Link to='/'>Add space</Link>

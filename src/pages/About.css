@@ -1,0 +1,142 @@
+.about-heading {
+  padding: 64px 0 56px;
+  width: 654px;
+}
+
+.about-heading h1 {
+  padding-bottom: 56px;
+  color: #1f1d8d;
+  font-family: 'Archivo', sans-serif;
+  font-size: 64px;
+  line-height: 110%;
+  font-size: 64px;
+  font-weight: 400;
+}
+
+.about-heading p {
+  font-size: 18px;
+  line-height: 150%;
+  color: #868e96;
+}
+
+.about-text-content {
+  width: 100%;
+  color: #343a40;
+  font-size: 24px;
+  line-height: 160%;
+  padding-top: 48px;
+  padding-bottom: 80px;
+}
+
+.about-gallery {
+  display: flex;
+  height: 480px;
+}
+
+.left {
+  height: 100%;
+  width: 752px;
+  background: url('../images/Jeff.jpg') no-repeat center center/cover;
+  margin-right: 32px;
+  min-width: 450px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.right .top {
+  width: 360px;
+  height: 232px;
+  background: url('../images/Jeff-sleeping.jpg') no-repeat center center/cover;
+}
+
+.right .bottom {
+  width: 360px;
+  height: 232px;
+  background: url('../images/Jeff-in-love.jpg') no-repeat center center/cover;
+}
+
+.about-credits {
+  padding-top: 80px;
+  width: 100%;
+}
+
+.about-credits h3 {
+  color: #1f1d8d;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 24px;
+  padding-bottom: 16px;
+}
+
+.about-credits p {
+  font-size: 16px;
+  line-height: 150%;
+  color: #868e96;
+  width: 654px;
+}
+
+.authors-container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 56px;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+}
+
+.author img {
+  display: block;
+  width: 56px;
+  height: 56px;
+  margin-right: 16px;
+}
+
+.author h4 {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  color: #1f1d8d;
+  padding-bottom: 4px;
+}
+
+.author p {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #868e96;
+}
+
+.about-container {
+  padding-bottom: 426px;
+}
+
+@media (max-width: 768px) {
+  .about-gallery {
+    flex-direction: column;
+    height: 730px;
+  }
+  .about-gallery .right {
+    flex-direction: row;
+  }
+
+  .right .top {
+    margin-right: 8px;
+  }
+  .about-gallery .left {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+
+  .authors-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 12px;
+  }
+}

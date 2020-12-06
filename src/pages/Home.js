@@ -62,16 +62,8 @@ function Home() {
           );
         })}
       </div>
-      <Footer />
     </div>
   );
 }
 
 export default Home;
-
-// const showImg = () => {
-//   if (`https://spaces-dxb-strapi-atlas.herokuapp.com/${item.image[0].url}`) {
-//     return `https://spaces-dxb-strapi-atlas.herokuapp.com/${item.image[0].url}`;
-//   }
-//   return faker.image.busines();
-// };

@@ -3,31 +3,32 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
-  const workspaces = [
-    {
-      title: 'A4 Space',
-      rating: 4.5,
-      internetSpeed: 100,
-      type: 'cafe',
-      image: 'office.jpg',
-    },
-    {
-      title: 'A4 Space',
-      rating: 4.5,
-      internetSpeed: 100,
-      type: 'cafe',
-      image: 'office.jpg',
-    },
-    {
-      title: 'A4 Space',
-      rating: 4.5,
-      internetSpeed: 100,
-      type: 'cafe',
-      image: 'office.jpg',
-    },
-  ];
+  // const workspaces = [
+  //   {
+  //     title: 'A4 Space',
+  //     rating: 4.5,
+  //     internetSpeed: 100,
+  //     type: 'cafe',
+  //     image: 'office.jpg',
+  //   },
+  //   {
+  //     title: 'A4 Space',
+  //     rating: 4.5,
+  //     internetSpeed: 100,
+  //     type: 'cafe',
+  //     image: 'office.jpg',
+  //   },
+  //   {
+  //     title: 'A4 Space',
+  //     rating: 4.5,
+  //     internetSpeed: 100,
+  //     type: 'cafe',
+  //     image: 'office.jpg',
+  //   },
+  // ];
 
   return (
     <Router>
@@ -43,6 +44,7 @@ function App() {
             <Home />
           </Route>
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
