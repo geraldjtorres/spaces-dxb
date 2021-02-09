@@ -11,12 +11,12 @@ function Footer() {
       </div>
       <div className='footer-nav'>
         <ul className='footer-links'>
-          <li className='footer-link'>
+          {/* <li className='footer-link'>
             <Link to='/'>About</Link>
           </li>
           <li className='footer-link'>
             <Link to='/'>Contact</Link>
-          </li>
+          </li> */}
         </ul>
         <span>Copyright &copy; 2020 Spaces.ae</span>
       </div>

@@ -12,8 +12,15 @@
   margin: auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .App {
     padding: 24px 24px;
+    max-width: 778px;
+  }
+}
+
+@media (max-width: 550px) {
+  .App {
+    padding: 24px 16px;
   }
 }

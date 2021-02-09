@@ -9,12 +9,12 @@ function Header() {
       <div className='logo'></div>
       <nav className='main-nav'>
         <ul>
-          <li className='nav-link'>
+          {/* <li className='nav-link'>
             <Link to='/about'>About</Link>
-          </li>
-          <li className='nav-link add-space'>
+          </li> */}
+          {/* <li className='nav-link add-space'>
             <Link to='/'>Add space</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>

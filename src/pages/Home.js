@@ -28,21 +28,21 @@ function Home() {
   }, []);
 
   return (
-    <div className='Home'>
-      <div className='heading'>
+    <div className='home'>
+      <div className='main-heading'>
         <h1>Find spaces to work online in Dubai</h1>
         <p>
           Why work from your home or office when you can work from wherever you
           want! Discover 40+ restaurants, cafés and co-working spaces across the
           UAE.
         </p>
-        <div className='add-btn'>
+        {/* <div className='add-btn'>
           <Link to='/'>Add a space</Link>
-        </div>
+        </div> */}
       </div>
-      <div className='search-bar'>
+      {/* <div className='search-bar'>
         <Searchbar />
-      </div>
+      </div> */}
       <div className='card-container'>
         {spaces.map((item) => {
           return (
