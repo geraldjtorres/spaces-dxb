@@ -37,7 +37,7 @@ function Home() {
     <div className='home'>
       <div className='alpha-mode'>
         <span>Website currently in alpha mode</span>
-        <span>
+        <span className='credits'>
           Designed by
           <a href='https://www.linkedin.com/in/tajdid/' target='_blank'>
             Taj

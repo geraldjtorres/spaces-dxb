@@ -59,6 +59,7 @@
   text-transform: uppercase;
   line-height: 16px;
   display: flex;
+  z-index: -1;
 }
 
 .card-content .heading .info-row .row-item {

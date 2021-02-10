@@ -97,4 +97,7 @@
   .heading p {
     display: none;
   }
+  .alpha-mode span.credits {
+    display: none;
+  }
 }
