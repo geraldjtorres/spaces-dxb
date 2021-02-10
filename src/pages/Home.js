@@ -73,8 +73,8 @@ function Home() {
           return (
             <Card
               image={
-                item.image.length
-                  ? `https://spaces-dxb-strapi-atlas.herokuapp.com${item.image[0].url}`
+                item.image
+                  ? `https://spaces-dxb-strapi-atlas.herokuapp.com${item.image.formats.small.url}`
                   : faker.image.business()
               }
               rating={item.rating}
