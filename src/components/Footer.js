@@ -6,9 +6,11 @@ import LogoSmall from '../images/space-logo-small.svg';
 function Footer() {
   return (
     <div className='main-footer'>
-      <div className='footer-logo'>
-        <img src={LogoSmall} alt='' />
-      </div>
+      <a href='#'>
+        <div className='footer-logo'>
+          <img src={LogoSmall} alt='' />
+        </div>
+      </a>
       <div className='footer-nav'>
         <ul className='footer-links'>
           {/* <li className='footer-link'>

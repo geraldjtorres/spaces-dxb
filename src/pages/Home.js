@@ -29,6 +29,29 @@ function Home() {
 
   return (
     <div className='home'>
+      <div className='alpha-mode'>
+        <span>Website currently in alpha mode</span>
+        <span>
+          Designed by
+          <a href='https://www.linkedin.com/in/tajdid/' target='_blank'>
+            Taj
+          </a>
+          and built by
+          <a
+            href='https://www.linkedin.com/in/gerald-jeff-torres-92a24a94/'
+            target='_blank'
+          >
+            Jeff
+          </a>
+          &amp;
+          <a
+            href='https://www.linkedin.com/in/barbora-tvrzova-1744741bb/'
+            target='_blank'
+          >
+            Bara
+          </a>
+        </span>
+      </div>
       <div className='main-heading'>
         <h1>Find spaces to work online in Dubai</h1>
         <p>

@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <div className='main-header'>
-      <div className='logo'></div>
+      <Link to='/'>
+        <div className='logo'></div>
+      </Link>
       <nav className='main-nav'>
         <ul>
           {/* <li className='nav-link'>
