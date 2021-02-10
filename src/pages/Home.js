@@ -1,31 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import './Home.css';
-import Card from '../components/Card';
-import faker from 'faker';
-import Searchbar from '../components/Searchbar';
-import Footer from '../components/Footer';
-import { Link } from 'react-router-dom';
-import axios from '../axios';
-import { useStateValue } from '../StateProvider';
+import React, { useState, useEffect } from 'react'
+import './Home.css'
+import Card from '../components/Card'
+import faker from 'faker'
+import Searchbar from '../components/Searchbar'
+import Footer from '../components/Footer'
+import { Link } from 'react-router-dom'
+import axios from '../axios'
+import { useStateValue } from '../StateProvider'
 
 function Home() {
-  const [{ spaces }, dispatch] = useStateValue();
+  const [{ spaces }, dispatch] = useStateValue()
 
   useEffect(() => {
     const getSpacesData = async () => {
       const response = await axios({
         method: 'get',
-        url: '/spaces',
-      });
+        url: '/spaces'
+      })
 
       dispatch({
         type: 'GET_SPACES',
-        item: response.data,
-      });
-    };
+        item: response.data
+      })
+    }
 
-    getSpacesData();
-  }, []);
+    console.log('response', spaces)
+
+    getSpacesData()
+  }, [])
 
   return (
     <div className='home'>
@@ -67,26 +69,27 @@ function Home() {
         <Searchbar />
       </div> */}
       <div className='card-container'>
-        {spaces.map((item) => {
+        {spaces.map(item => {
           return (
             <Card
               image={
-                `https://spaces-dxb-strapi-atlas.herokuapp.com${item.image[0].url}` ||
-                faker.image.business()
+                item.image.length
+                  ? `https://spaces-dxb-strapi-atlas.herokuapp.com${item.image[0].url}`
+                  : faker.image.business()
               }
               rating={item.rating}
               internetSpeed={item.internetSpeed}
               type='Cafe'
               name={item.name}
-              sockets={item.sockets[0].name}
+              sockets={item.socket.name}
               key={item.id}
               calls='Okay for calls'
             />
-          );
+          )
         })}
       </div>
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home

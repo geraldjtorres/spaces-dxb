@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import './Header.css';
-import { Link } from 'react-router-dom';
+import './Header.css'
+import { Link } from 'react-router-dom'
 
 function Header() {
   return (
@@ -20,7 +20,7 @@ function Header() {
         </ul>
       </nav>
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header
