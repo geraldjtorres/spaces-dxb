@@ -11,6 +11,8 @@
     0px 0.15378px 10.0172px rgba(0, 0, 0, 0.0238443),
     0px 0.49341px 5.32008px rgba(0, 0, 0, 0.0287542),
     0px 0.574729px 2.21381px rgba(0, 0, 0, 0.04);
+  text-decoration: none;
+  color: black;
 }
 
 .card-image {
@@ -173,3 +175,7 @@
 .card-content .rating-row img {
   margin-right: 10px;
 } */
+
+.wifi-pass {
+  font-family: 'IBM Plex Mono', monospace;
+}

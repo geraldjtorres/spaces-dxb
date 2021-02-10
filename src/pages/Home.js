@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react'
 import './Home.css'
 import Card from '../components/Card'
 import faker from 'faker'
-import Searchbar from '../components/Searchbar'
-import Footer from '../components/Footer'
-import { Link } from 'react-router-dom'
+import Spinner from '../components/Spinner'
+// import Searchbar from '../components/Searchbar'
+// import Footer from '../components/Footer'
+// import { Link } from 'react-router-dom'
 import axios from '../axios'
 import { useStateValue } from '../StateProvider'
 
 function Home() {
   const [{ spaces }, dispatch] = useStateValue()
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
     const getSpacesData = async () => {
@@ -22,6 +24,8 @@ function Home() {
         type: 'GET_SPACES',
         item: response.data
       })
+
+      setLoading(false)
     }
 
     console.log('response', spaces)
@@ -68,25 +72,36 @@ function Home() {
       {/* <div className='search-bar'>
         <Searchbar />
       </div> */}
+
       <div className='card-container'>
-        {spaces.map(item => {
-          return (
-            <Card
-              image={
-                item.image
-                  ? `https://spaces-dxb-strapi-atlas.herokuapp.com${item.image.formats.small.url}`
-                  : faker.image.business()
-              }
-              rating={item.rating}
-              internetSpeed={item.internetSpeed}
-              type='Cafe'
-              name={item.name}
-              sockets={item.socket.name}
-              key={item.id}
-              calls='Okay for calls'
-            />
-          )
-        })}
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          spaces.map(item => {
+            return (
+              <Card
+                image={
+                  item.image
+                    ? `https://spaces-dxb-strapi-atlas.herokuapp.com${item.image.formats.small.url}`
+                    : faker.image.business()
+                }
+                rating={item.rating}
+                internetSpeed={item.internetSpeed}
+                type={item.category.name}
+                name={item.name}
+                sockets={item.socket.name}
+                key={item.id}
+                noiseLevel={item.noise_level.name}
+                website={item.website}
+                wifiPassword={
+                  item.wifiPassword
+                    ? item.wifiPassword
+                    : 'No wifi password required'
+                }
+              />
+            )
+          })
+        )}
       </div>
     </div>
   )
