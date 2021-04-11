@@ -137,3 +137,8 @@
   border: 1px solid #1f1d8d;
   color: #ffffff;
 }
+
+.add-space-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

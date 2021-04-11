@@ -18,7 +18,6 @@ const AddSpaceForm = () => {
   const [noiseLevel, setNoiseLevel] = useState('')
   const [website, setWebsite] = useState('')
   const [directions, setDirections] = useState('')
-
   const {
     ready,
     value,
@@ -68,6 +67,11 @@ const AddSpaceForm = () => {
         if (details.rating) setRating(Math.round(details.rating))
         if (details.website) setWebsite(details.website)
         if (details.url) setDirections(details.url)
+
+        console.log('name: ', workspaceName)
+        console.log('rating: ', rating)
+        console.log('website: ', website)
+        console.log('directions: ', directions)
       })
       .catch(error => {
         console.log('Error: ', error)
@@ -319,7 +323,19 @@ const AddSpaceForm = () => {
 
       <button
         className='add-space-btn'
-        // disabled
+        disabled={
+          !value ||
+          !category ||
+          !passwordExist ||
+          !internetSpeed ||
+          !sockets ||
+          !noiseLevel ||
+          !rating ||
+          !website ||
+          !directions
+            ? true
+            : false
+        }
         onClick={e => onHandleSubmit(e)}
       >
         Add a space
