@@ -1,0 +1,139 @@
+.MuiDialog-paperWidthSm {
+  max-width: 750px !important;
+  width: 100% !important;
+}
+
+.form {
+  background-color: white;
+  padding: 40px 32px;
+}
+
+.input-style {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-left: 10px;
+  position: relative;
+}
+
+.input-style input {
+  border: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 16px;
+  width: 100%;
+  outline: none;
+  margin-left: 10px;
+}
+
+.suggestion-list {
+  position: absolute;
+  list-style: none;
+  background: white;
+  top: 40px;
+  width: 100%;
+  box-shadow: 0 8px 12px rgb(0 0 0 / 18%);
+  left: 0;
+}
+
+.suggestion-list li {
+  display: flex;
+  margin: 6px 0;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.suggestion-list li:hover {
+  background-color: #f5f5f5;
+}
+
+.suggestion-label {
+  margin-left: 12px;
+}
+
+.suggestion-list li:hover p:first-of-type {
+  color: #1f1d8d;
+}
+
+.suggestion-list li p:first-of-type {
+  font-weight: bold;
+}
+
+.suggestion-list li p:last-of-type {
+  font-size: 12px;
+}
+
+.wifiPass {
+  margin-top: 12px;
+  width: 63%;
+}
+
+.form-group {
+  margin-top: 30px;
+}
+
+.form-group h5 {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  color: #1f1d8d;
+  margin-left: 10px;
+}
+
+.add-space-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f1d8d;
+  color: #ffffff;
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  color: white;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+/* radio buttons */
+
+.radio-toolbar {
+  margin-top: 8px;
+  display: flex;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+}
+
+.radio-toolbar input[type='radio'] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.radio-toolbar label {
+  display: inline-block;
+  background-color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  border: 1px solid rgba(145, 149, 255, 0.25);
+  cursor: pointer;
+  color: #1f1d8d;
+  width: 30%;
+  text-align: center;
+  margin: 10px;
+}
+
+.radio-toolbar input[type='radio']:checked + label {
+  background: #1f1d8d;
+  border: 1px solid #1f1d8d;
+  color: #ffffff;
+}

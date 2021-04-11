@@ -1,8 +1,9 @@
-import React from 'react';
-import TajAvatar from '../images/Taj-avatar.jpg';
-import BaraAvatar from '../images/Bara-avatar.jpg';
-import JeffAvatar from '../images/Jeff-avatar.jpg';
-import './About.css';
+import React from 'react'
+import TajAvatar from '../images/Taj-avatar.jpg'
+import BaraAvatar from '../images/Bara-avatar.jpg'
+import JeffAvatar from '../images/Jeff-avatar.jpg'
+import './About.css'
+import MyAccordion from '../components/MyAccordion'
 
 function About() {
   return (
@@ -68,8 +69,10 @@ function About() {
           </div>
         </div>
       </div>
+
+      <MyAccordion />
     </div>
-  );
+  )
 }
 
-export default About;
+export default About

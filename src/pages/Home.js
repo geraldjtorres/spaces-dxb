@@ -3,15 +3,39 @@ import './Home.css'
 import Card from '../components/Card'
 import faker from 'faker'
 import Spinner from '../components/Spinner'
-// import Searchbar from '../components/Searchbar'
-// import Footer from '../components/Footer'
-// import { Link } from 'react-router-dom'
+import Searchbar from '../components/Searchbar'
 import axios from '../axios'
 import { useStateValue } from '../StateProvider'
+import { makeStyles } from '@material-ui/core/styles'
+import AddSpaceForm from '../components/AddSpaceForm'
+
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogTitle from '@material-ui/core/DialogTitle'
+
+const useStyles = makeStyles(theme => ({
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+}))
 
 function Home() {
   const [{ spaces }, dispatch] = useStateValue()
   const [isLoading, setLoading] = useState(true)
+  const [open, setOpen] = useState(false)
+  const classes = useStyles()
+
+  const handleOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
 
   useEffect(() => {
     const getSpacesData = async () => {
@@ -65,9 +89,18 @@ function Home() {
           want! Discover 40+ restaurants, cafés and co-working spaces across the
           UAE.
         </p>
-        {/* <div className='add-btn'>
-          <Link to='/'>Add a space</Link>
-        </div> */}
+
+        <button className='add-btn' onClick={handleOpen}>
+          Add a space
+        </button>
+
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby='form-dialog-title'
+        >
+          <AddSpaceForm closeDialog={handleClose} />
+        </Dialog>
       </div>
       {/* <div className='search-bar'>
         <Searchbar />
@@ -86,7 +119,7 @@ function Home() {
                     : faker.image.business()
                 }
                 rating={item.rating}
-                internetSpeed={item.internetSpeed}
+                internetSpeed={item.internet_speed.name}
                 type={item.category.name}
                 name={item.name}
                 sockets={item.socket.name}
@@ -94,8 +127,8 @@ function Home() {
                 noiseLevel={item.noise_level.name}
                 website={item.website}
                 wifiPassword={
-                  item.wifiPassword
-                    ? item.wifiPassword
+                  item.wifi_password
+                    ? item.wifi_password
                     : 'No wifi password required'
                 }
               />

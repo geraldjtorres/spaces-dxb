@@ -54,11 +54,11 @@
   width: 128px;
   height: 40px;
   border-radius: 40px;
-}
-
-.add-btn a {
   color: white;
   text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .card-container {

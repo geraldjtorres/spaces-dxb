@@ -2,7 +2,6 @@ import React from 'react'
 import './Card.css'
 import faker from 'faker'
 import wifi from '../images/wifi.svg'
-import star from '../images/star.svg'
 import volume from '../images/volume.svg'
 import power from '../images/power.svg'
 import lock from '../images/lock.svg'
@@ -33,7 +32,6 @@ function Card(props) {
             <img src={wifi} alt='' />
             <div className='text'>
               <span className='bold'>{props.internetSpeed}</span>
-              <span> Mbps</span>
             </div>
           </div>
           <div className='sockets'>
