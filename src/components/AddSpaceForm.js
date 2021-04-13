@@ -5,7 +5,8 @@ import SearchIcon from '@material-ui/icons/Search'
 import LockOpenIcon from '@material-ui/icons/LockOpen'
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined'
 import usePlacesAutocomplete, { getDetails } from 'use-places-autocomplete'
-import useOnclickOutside from 'react-cool-onclickoutside'
+import axios from '../axios'
+// import Spinner from './components/Spinner'
 
 const AddSpaceForm = () => {
   const [workspaceName, setWorkspaceName] = useState('')
@@ -18,6 +19,8 @@ const AddSpaceForm = () => {
   const [noiseLevel, setNoiseLevel] = useState('')
   const [website, setWebsite] = useState('')
   const [directions, setDirections] = useState('')
+  const [isLoading, setLoading] = useState(false)
+
   const {
     ready,
     value,
@@ -33,9 +36,31 @@ const AddSpaceForm = () => {
     debounce: 300
   })
 
-  const onHandleSubmit = e => {
+  const onHandleSubmit = async e => {
     e.preventDefault()
     console.log('submit form')
+
+    setLoading(true)
+
+    const response = await axios({
+      method: 'POST',
+      url: '/spaces',
+      data: {
+        name: workspaceName,
+        website,
+        rating,
+        // socket: [sockets],
+        category: { id: '6023a5d69639c476df3a10fd' },
+        // noise_level: [noiseLevel],
+        wifi_password: wifiPassword,
+        directions
+        // internet_speed: [internetSpeed]
+      }
+    })
+
+    console.log('posted!', response)
+
+    setLoading(false)
   }
 
   const handleInput = e => {

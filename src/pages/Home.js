@@ -27,6 +27,7 @@ function Home() {
   const [{ spaces }, dispatch] = useStateValue()
   const [isLoading, setLoading] = useState(true)
   const [open, setOpen] = useState(false)
+  const [allCategories, setCategories] = useState([])
   const classes = useStyles()
 
   const handleOpen = () => {
@@ -36,25 +37,34 @@ function Home() {
   const handleClose = () => {
     setOpen(false)
   }
+  const getSpacesData = async () => {
+    const response = await axios({
+      method: 'get',
+      url: '/spaces'
+    })
+
+    dispatch({
+      type: 'GET_SPACES',
+      item: response.data
+    })
+
+    setLoading(false)
+  }
+
+  const getAllCategories = async () => {
+    const res = await axios({
+      method: 'get',
+      url: '/categories'
+    })
+
+    setCategories(res.data)
+    console.log('allCategories', allCategories)
+  }
 
   useEffect(() => {
-    const getSpacesData = async () => {
-      const response = await axios({
-        method: 'get',
-        url: '/spaces'
-      })
-
-      dispatch({
-        type: 'GET_SPACES',
-        item: response.data
-      })
-
-      setLoading(false)
-    }
-
-    console.log('response', spaces)
-
+    getAllCategories()
     getSpacesData()
+    console.log('allCategories', allCategories)
   }, [])
 
   return (
@@ -90,16 +100,19 @@ function Home() {
           UAE.
         </p>
 
-        <button className='add-btn' onClick={handleOpen}>
+        {/* <button className='add-btn' onClick={handleOpen}>
           Add a space
-        </button>
+        </button> */}
 
         <Dialog
           open={open}
           onClose={handleClose}
           aria-labelledby='form-dialog-title'
         >
-          <AddSpaceForm closeDialog={handleClose} />
+          <AddSpaceForm
+            closeDialog={handleClose}
+            allCategories={allCategories}
+          />
         </Dialog>
       </div>
       {/* <div className='search-bar'>
