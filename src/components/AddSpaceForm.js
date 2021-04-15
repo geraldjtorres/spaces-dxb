@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './AddSpaceForm.css'
 import './AddressSearch.css'
 import SearchIcon from '@material-ui/icons/Search'
@@ -45,13 +45,6 @@ const AddSpaceForm = () => {
     debounce: 300
   })
 
-  useEffect(() => {
-    console.log('allCategories', categories)
-    console.log('sockets', sockets)
-    console.log('intenretspeeds', internetSpeeds)
-    console.log('noiselevel', noiseLevels)
-  }, [])
-
   const onHandleSubmit = async e => {
     e.preventDefault()
     console.log('submit form')
@@ -82,9 +75,12 @@ const AddSpaceForm = () => {
       setTimeout(() => {
         setLoading(false)
         setSuccess(true)
-      }, 4000)
+      }, 2500)
     } catch (err) {
-      setHasError(true)
+      setTimeout(() => {
+        setLoading(false)
+        setHasError(true)
+      }, 2500)
     }
   }
 
@@ -131,7 +127,7 @@ const AddSpaceForm = () => {
     data.map(suggestion => {
       const {
         place_id,
-        structured_formatting: { main_text, secondary_text }
+        structured_formatting: { main_text }
       } = suggestion
 
       return (
