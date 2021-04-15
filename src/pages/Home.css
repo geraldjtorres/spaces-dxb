@@ -16,6 +16,7 @@
   color: #1f1d8d;
   font-size: 12px;
   font-size: 500;
+  z-index: 20;
 }
 
 .alpha-mode a {
