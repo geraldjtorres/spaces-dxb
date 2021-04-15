@@ -147,3 +147,20 @@
   opacity: 0.5;
   cursor: default;
 }
+
+.feedback-message {
+  font-size: 22px;
+  color: #1f1d8d;
+  text-align: center;
+}
+
+@media (max-width: 550px) {
+  .form {
+    padding: 20px;
+    text-align: center;
+  }
+  .radio-btn {
+    width: 100%;
+    margin: 10px;
+  }
+}
