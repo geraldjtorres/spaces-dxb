@@ -6,7 +6,7 @@ import './Footer.css'
 
 function Footer() {
   return (
-    <div className='main-footer'>
+    <div className='footer'>
       <a href='#'>
         <div className='footer-logo'>
           <img src={LogoSmall} alt='' />
