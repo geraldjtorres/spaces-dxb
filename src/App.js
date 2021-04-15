@@ -20,7 +20,7 @@ function App() {
             <Home />
           </Route>
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
   )
