@@ -21,7 +21,6 @@ function App() {
           </Route>
         </Switch>
         <Footer />
-        <Header />
       </div>
     </Router>
   )
