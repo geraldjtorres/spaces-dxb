@@ -8,13 +8,15 @@ import lock from '../images/lock.svg'
 
 function Card(props) {
   return (
-    <a href={props.website} target='_blank' className='card'>
-      <div className='card-image'>
+    <div className='card'>
+      <a href={props.website} target='_blank' className='card-image'>
         <img src={props.image} alt='' />
-      </div>
+      </a>
       <div className='card-content'>
         <div className='heading'>
-          <h2 className='name'>{props.name}</h2>
+          <a href={props.website} target='_blank' className='name'>
+            {props.name}
+          </a>
           <div className='info-row'>
             <div className='row-item type'>{props.type}</div>
             <div className='row-item rating'>
@@ -24,7 +26,13 @@ function Card(props) {
                   <span key={i}>💛</span>
                 ))}
             </div>
-            {/* <div className='row-item location'>Somewhere</div> */}
+            <a
+              className='row-item location'
+              href={props.directions}
+              target='_blank'
+            >
+              Directions
+            </a>
           </div>
         </div>
         <div className='specs-row'>
@@ -51,7 +59,7 @@ function Card(props) {
           {/* <div className='copy'>Copy</div> */}
         </div>
       </div>
-    </a>
+    </div>
   )
 }
 

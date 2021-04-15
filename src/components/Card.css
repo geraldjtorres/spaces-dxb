@@ -42,6 +42,7 @@
   height: 78px;
   padding: 16px;
   margin: 0 auto 0 0;
+  text-decoration: none;
 }
 
 .card-content .heading .name {
@@ -50,6 +51,8 @@
   font-weight: 700;
   color: #1f1d8d;
   font-family: 'Archivo', sans-serif;
+  margin-bottom: 10px;
+  text-decoration: none;
 }
 
 .card-content .heading .info-row {
@@ -59,12 +62,17 @@
   text-transform: uppercase;
   line-height: 16px;
   display: flex;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
 .card-content .heading .info-row .row-item {
   padding: 0 8px;
   position: relative;
+}
+
+.card-content .heading .info-row .location {
+  color: #1f1d8d;
+  text-decoration: none;
 }
 
 .row-item:before {

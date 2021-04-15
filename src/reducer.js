@@ -1,5 +1,9 @@
 export const initialState = {
-  spaces: []
+  spaces: [],
+  categories: [],
+  sockets: [],
+  internetSpeeds: [],
+  noiseLevels: []
 }
 
 const reducer = (state, action) => {
@@ -9,6 +13,26 @@ const reducer = (state, action) => {
       return {
         ...state,
         spaces: action.item
+      }
+    case 'GET_CATEGORIES':
+      return {
+        ...state,
+        categories: action.item
+      }
+    case 'GET_SOCKETS':
+      return {
+        ...state,
+        sockets: action.item
+      }
+    case 'GET_INTERNETSPEEDS':
+      return {
+        ...state,
+        internetSpeeds: action.item
+      }
+    case 'GET_NOISELEVELS':
+      return {
+        ...state,
+        noiseLevels: action.item
       }
     default:
       return state

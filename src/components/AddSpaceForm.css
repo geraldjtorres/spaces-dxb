@@ -127,8 +127,13 @@
   border: 1px solid rgba(145, 149, 255, 0.25);
   cursor: pointer;
   color: #1f1d8d;
-  width: 30%;
+  width: 100%;
   text-align: center;
+  /* margin: 10px; */
+}
+
+.radio-btn {
+  width: 30%;
   margin: 10px;
 }
 

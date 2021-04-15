@@ -6,29 +6,14 @@ import Spinner from '../components/Spinner'
 import Searchbar from '../components/Searchbar'
 import axios from '../axios'
 import { useStateValue } from '../StateProvider'
-import { makeStyles } from '@material-ui/core/styles'
 import AddSpaceForm from '../components/AddSpaceForm'
 
 import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
-
-const useStyles = makeStyles(theme => ({
-  modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-}))
 
 function Home() {
   const [{ spaces }, dispatch] = useStateValue()
   const [isLoading, setLoading] = useState(true)
   const [open, setOpen] = useState(false)
-  const [allCategories, setCategories] = useState([])
-  const classes = useStyles()
 
   const handleOpen = () => {
     setOpen(true)
@@ -37,15 +22,15 @@ function Home() {
   const handleClose = () => {
     setOpen(false)
   }
-  const getSpacesData = async () => {
-    const response = await axios({
+  const getSpaces = async () => {
+    const res = await axios({
       method: 'get',
       url: '/spaces'
     })
 
     dispatch({
       type: 'GET_SPACES',
-      item: response.data
+      item: res.data
     })
 
     setLoading(false)
@@ -57,14 +42,54 @@ function Home() {
       url: '/categories'
     })
 
-    setCategories(res.data)
-    console.log('allCategories', allCategories)
+    dispatch({
+      type: 'GET_CATEGORIES',
+      item: res.data
+    })
+  }
+
+  const getSockets = async () => {
+    const res = await axios({
+      method: 'get',
+      url: '/sockets'
+    })
+
+    dispatch({
+      type: 'GET_SOCKETS',
+      item: res.data
+    })
+  }
+
+  const getInternetSpeeds = async () => {
+    const res = await axios({
+      method: 'get',
+      url: '/internet-speeds'
+    })
+
+    dispatch({
+      type: 'GET_INTERNETSPEEDS',
+      item: res.data
+    })
+  }
+
+  const getNoiseLevels = async () => {
+    const res = await axios({
+      method: 'get',
+      url: '/noise-levels'
+    })
+
+    dispatch({
+      type: 'GET_NOISELEVELS',
+      item: res.data
+    })
   }
 
   useEffect(() => {
     getAllCategories()
-    getSpacesData()
-    console.log('allCategories', allCategories)
+    getSpaces()
+    getSockets()
+    getInternetSpeeds()
+    getNoiseLevels()
   }, [])
 
   return (
@@ -100,19 +125,16 @@ function Home() {
           UAE.
         </p>
 
-        {/* <button className='add-btn' onClick={handleOpen}>
+        <button className='add-btn' onClick={handleOpen}>
           Add a space
-        </button> */}
+        </button>
 
         <Dialog
           open={open}
           onClose={handleClose}
           aria-labelledby='form-dialog-title'
         >
-          <AddSpaceForm
-            closeDialog={handleClose}
-            allCategories={allCategories}
-          />
+          <AddSpaceForm closeDialog={handleClose} />
         </Dialog>
       </div>
       {/* <div className='search-bar'>
@@ -126,11 +148,7 @@ function Home() {
           spaces.map(item => {
             return (
               <Card
-                image={
-                  item.image
-                    ? `https://spaces-dxb-strapi-atlas.herokuapp.com${item.image.formats.small.url}`
-                    : faker.image.business()
-                }
+                image={item.img ? item.img : faker.image.business()}
                 rating={item.rating}
                 internetSpeed={item.internet_speed.name}
                 type={item.category.name}
@@ -139,6 +157,7 @@ function Home() {
                 key={item.id}
                 noiseLevel={item.noise_level.name}
                 website={item.website}
+                directions={item.directions}
                 wifiPassword={
                   item.wifi_password
                     ? item.wifi_password

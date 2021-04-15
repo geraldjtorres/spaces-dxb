@@ -6,20 +6,27 @@ import LockOpenIcon from '@material-ui/icons/LockOpen'
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined'
 import usePlacesAutocomplete, { getDetails } from 'use-places-autocomplete'
 import axios from '../axios'
+import { useStateValue } from '../StateProvider'
 // import Spinner from './components/Spinner'
 
 const AddSpaceForm = () => {
+  const [
+    { categories, sockets, internetSpeeds, noiseLevels },
+    dispatch
+  ] = useStateValue()
   const [workspaceName, setWorkspaceName] = useState('')
-  const [category, setCategory] = useState('')
+  const [categoryType, setCategoryType] = useState('')
   const [rating, setRating] = useState('')
   const [internetSpeed, setInternetSpeed] = useState('')
-  const [sockets, setSockets] = useState('')
+  const [socket, setSocket] = useState('')
   const [wifiPassword, setWifiPassword] = useState('')
   const [passwordExist, setPasswordExist] = useState('')
   const [noiseLevel, setNoiseLevel] = useState('')
   const [website, setWebsite] = useState('')
   const [directions, setDirections] = useState('')
   const [isLoading, setLoading] = useState(false)
+  const [place_id, setplaceId] = useState('')
+  const [img, setImg] = useState('')
 
   const {
     ready,
@@ -36,6 +43,13 @@ const AddSpaceForm = () => {
     debounce: 300
   })
 
+  useEffect(() => {
+    console.log('allCategories', categories)
+    console.log('sockets', sockets)
+    console.log('intenretspeeds', internetSpeeds)
+    console.log('noiselevel', noiseLevels)
+  }, [])
+
   const onHandleSubmit = async e => {
     e.preventDefault()
     console.log('submit form')
@@ -49,12 +63,14 @@ const AddSpaceForm = () => {
         name: workspaceName,
         website,
         rating,
-        // socket: [sockets],
-        category: { id: '6023a5d69639c476df3a10fd' },
-        // noise_level: [noiseLevel],
+        img,
+        socket: [socket],
+        category: [categoryType],
+        noise_level: [noiseLevel],
         wifi_password: wifiPassword,
-        directions
-        // internet_speed: [internetSpeed]
+        directions,
+        internet_speed: [internetSpeed],
+        place_id
       }
     })
 
@@ -83,20 +99,19 @@ const AddSpaceForm = () => {
     getDetails(parameter)
       .then(details => {
         console.log('Details: ', details)
-        console.log(
-          'photo',
-          details.photos[1].getUrl({ maxWidth: 500, maxHeight: 500 })
-        )
+        const image = details.photos[1].getUrl({
+          maxWidth: 500,
+          maxHeight: 500
+        })
 
+        console.log('photo', image)
+
+        if (details.photos) setImg(image)
         if (details.name) setWorkspaceName(details.name)
         if (details.rating) setRating(Math.round(details.rating))
         if (details.website) setWebsite(details.website)
         if (details.url) setDirections(details.url)
-
-        console.log('name: ', workspaceName)
-        console.log('rating: ', rating)
-        console.log('website: ', website)
-        console.log('directions: ', directions)
+        if (details.place_id) setplaceId(details.place_id)
       })
       .catch(error => {
         console.log('Error: ', error)
@@ -123,6 +138,74 @@ const AddSpaceForm = () => {
       )
     })
 
+  const renderCategories = () =>
+    categories.map(category => {
+      return (
+        <div className='radio-btn' key={category.id}>
+          <input
+            type='radio'
+            id={category.id}
+            value={category.id}
+            onChange={e => setCategoryType(e.target.value)}
+            checked={category.id === categoryType}
+            required
+          />
+          <label htmlFor={category.id}>{category.name}</label>
+        </div>
+      )
+    })
+
+  const renderSockets = () =>
+    sockets.map(socketType => {
+      return (
+        <div className='radio-btn' key={socketType.id}>
+          <input
+            type='radio'
+            id={socketType.id}
+            value={socketType.id}
+            onChange={e => setSocket(e.target.value)}
+            checked={socketType.id === socket}
+            required
+          />
+          <label htmlFor={socketType.id}>{socketType.name}</label>
+        </div>
+      )
+    })
+
+  const renderInternetSpeeds = () =>
+    internetSpeeds.map(item => {
+      return (
+        <div className='radio-btn' key={item.id}>
+          <input
+            type='radio'
+            id={item.id}
+            value={item.id}
+            onChange={e => setInternetSpeed(e.target.value)}
+            checked={item.id === internetSpeed}
+            required
+          />
+          <label htmlFor={item.id}>{item.name}</label>
+        </div>
+      )
+    })
+
+  const renderNoiseLevels = () =>
+    noiseLevels.map(item => {
+      return (
+        <div className='radio-btn' key={item.id}>
+          <input
+            type='radio'
+            id={item.id}
+            value={item.id}
+            onChange={e => setNoiseLevel(e.target.value)}
+            checked={item.id === noiseLevel}
+            required
+          />
+          <label htmlFor={item.id}>{item.name}</label>
+        </div>
+      )
+    })
+
   return (
     <form className='form'>
       <div className='input-style'>
@@ -142,90 +225,35 @@ const AddSpaceForm = () => {
 
       <div className='form-group'>
         <h5>Type of Space</h5>
-        <div className='radio-toolbar'>
-          <input
-            type='radio'
-            id='Cafe'
-            value='Cafe'
-            onChange={e => setCategory(e.target.value)}
-            checked={category === 'Cafe'}
-            required
-          />
-          <label htmlFor='Cafe'>Cafe</label>
-
-          <input
-            type='radio'
-            id='Restaurant'
-            value='Restaurant'
-            onChange={e => setCategory(e.target.value)}
-            checked={category === 'Restaurant'}
-            required
-          />
-          <label htmlFor='Restaurant'>Restaurant</label>
-
-          <input
-            type='radio'
-            id='Bar'
-            value='Bar'
-            onChange={e => setCategory(e.target.value)}
-            checked={category === 'Bar'}
-            required
-          />
-          <label htmlFor='Bar'>Bar</label>
-          <input
-            type='radio'
-            id='Co-working'
-            value='Co-working'
-            onChange={e => setCategory(e.target.value)}
-            checked={category === 'Co-working'}
-            required
-          />
-          <label htmlFor='Co-working'>Co-working</label>
-
-          <input
-            type='radio'
-            id='Library'
-            value='Library'
-            onChange={e => setCategory(e.target.value)}
-            checked={category === 'Library'}
-            required
-          />
-          <label htmlFor='Library'>Library</label>
-
-          <input
-            type='radio'
-            id='Other'
-            value='Other'
-            onChange={e => setCategory(e.target.value)}
-            checked={category === 'Other'}
-            required
-          />
-          <label htmlFor='Other'>Other</label>
-        </div>
+        <div className='radio-toolbar'>{categories && renderCategories()}</div>
       </div>
 
       <div className='form-group'>
         <h5>Is there a Wi-Fi password?</h5>
         <div className='radio-toolbar'>
-          <input
-            type='radio'
-            id='passwordExistYes'
-            value='passwordExistYes'
-            onChange={e => setPasswordExist(e.target.value)}
-            checked={passwordExist === 'passwordExistYes'}
-            required
-          />
-          <label htmlFor='passwordExistYes'>Yes</label>
+          <div className='radio-btn'>
+            <input
+              type='radio'
+              id='passwordExistYes'
+              value='passwordExistYes'
+              onChange={e => setPasswordExist(e.target.value)}
+              checked={passwordExist === 'passwordExistYes'}
+              required
+            />
+            <label htmlFor='passwordExistYes'>Yes</label>
+          </div>
 
-          <input
-            type='radio'
-            id='passwordExistNo'
-            value='passwordExistNo'
-            onChange={e => setPasswordExist(e.target.value)}
-            checked={passwordExist === 'passwordExistNo'}
-            required
-          />
-          <label htmlFor='passwordExistNo'>No</label>
+          <div className='radio-btn'>
+            <input
+              type='radio'
+              id='passwordExistNo'
+              value='passwordExistNo'
+              onChange={e => setPasswordExist(e.target.value)}
+              checked={passwordExist === 'passwordExistNo'}
+              required
+            />
+            <label htmlFor='passwordExistNo'>No</label>
+          </div>
         </div>
 
         {passwordExist === 'passwordExistYes' ? (
@@ -244,105 +272,19 @@ const AddSpaceForm = () => {
       <div className='form-group'>
         <h5>Internet Speed</h5>
         <div className='radio-toolbar'>
-          <input
-            type='radio'
-            id='Fast'
-            value='Fast'
-            onChange={e => setInternetSpeed(e.target.value)}
-            checked={internetSpeed === 'Fast'}
-            required
-          />
-          <label htmlFor='Fast'>Fast</label>
-
-          <input
-            type='radio'
-            id='Medium'
-            value='Medium'
-            onChange={e => setInternetSpeed(e.target.value)}
-            checked={internetSpeed === 'Medium'}
-            required
-          />
-          <label htmlFor='Medium'>Medium</label>
-
-          <input
-            type='radio'
-            id='Slow'
-            value='Slow'
-            onChange={e => setInternetSpeed(e.target.value)}
-            checked={internetSpeed === 'Slow'}
-            required
-          />
-          <label htmlFor='Slow'>Slow</label>
+          {internetSpeeds && renderInternetSpeeds()}
         </div>
       </div>
 
       <div className='form-group'>
         <h5>Are there plug sockets?</h5>
-        <div className='radio-toolbar'>
-          <input
-            type='radio'
-            id='None'
-            value='None'
-            onChange={e => setSockets(e.target.value)}
-            checked={sockets === 'None'}
-            required
-          />
-          <label htmlFor='None'>None</label>
-
-          <input
-            type='radio'
-            id='Some'
-            value='Some'
-            onChange={e => setSockets(e.target.value)}
-            checked={sockets === 'Some'}
-            required
-          />
-          <label htmlFor='Some'>Some</label>
-
-          <input
-            type='radio'
-            id='Many'
-            value='Many'
-            onChange={e => setSockets(e.target.value)}
-            checked={sockets === 'Many'}
-            required
-          />
-          <label htmlFor='Many'>Many</label>
-        </div>
+        <div className='radio-toolbar'>{sockets && renderSockets()}</div>
       </div>
 
       <div className='form-group'>
         <h5>What is the noise level?</h5>
         <div className='radio-toolbar'>
-          <input
-            type='radio'
-            id='Quiet'
-            value='Quiet'
-            onChange={e => setNoiseLevel(e.target.value)}
-            checked={noiseLevel === 'Quiet'}
-            required
-          />
-          <label htmlFor='Quiet'>Quiet</label>
-
-          <input
-            type='radio'
-            id='Moderate'
-            value='Moderate'
-            onChange={e => setNoiseLevel(e.target.value)}
-            checked={noiseLevel === 'Moderate'}
-            required
-          />
-          <label htmlFor='Moderate'>Moderate</label>
-
-          <input
-            type='radio'
-            id='Loud'
-            value='Loud'
-            onChange={e => setNoiseLevel(e.target.value)}
-            checked={noiseLevel === 'Loud'}
-            required
-          />
-          <label htmlFor='Loud'>Loud</label>
+          {noiseLevels && renderNoiseLevels()}
         </div>
       </div>
 
@@ -350,12 +292,13 @@ const AddSpaceForm = () => {
         className='add-space-btn'
         disabled={
           !value ||
-          !category ||
+          !categoryType ||
           !passwordExist ||
           !internetSpeed ||
           !sockets ||
           !noiseLevel ||
           !rating ||
+          !place_id ||
           !website ||
           !directions
             ? true
