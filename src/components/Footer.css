@@ -1,4 +1,4 @@
-.footer {
+.footerStyle {
   max-width: 100%;
   display: flex;
   flex-direction: row;
@@ -8,13 +8,13 @@
   margin-top: 276px;
 }
 
-.footer .footer-nav {
+.footerStyle .footer-nav {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
-.footer ul {
+.footerStyle ul {
   list-style: none;
   display: flex;
   font-size: 12px;

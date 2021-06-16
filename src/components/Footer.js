@@ -6,12 +6,12 @@ import './Footer.css'
 
 function Footer() {
   return (
-    <div className='footer'>
-      <a href='#'>
+    <div className='footerStyle'>
+      <div>
         <div className='footer-logo'>
           <img src={LogoSmall} alt='' />
         </div>
-      </a>
+      </div>
       <div className='footer-nav'>
         <ul className='footer-links'>
           <li className='footer-link'>
