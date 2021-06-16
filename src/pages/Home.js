@@ -92,12 +92,8 @@ function Home() {
     getNoiseLevels()
   }, [])
 
-  const divStyles = {
-    border: '1px solid red'
-  }
-
   return (
-    <div className='home' style={divStyles}>
+    <div className='home'>
       <div className='alpha-mode'>
         <span>Website currently in alpha mode</span>
         <span className='credits'>
