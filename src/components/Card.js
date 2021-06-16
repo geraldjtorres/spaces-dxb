@@ -1,16 +1,59 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Card.css'
-import faker from 'faker'
 import wifi from '../images/wifi.svg'
 import volume from '../images/volume.svg'
 import power from '../images/power.svg'
 import lock from '../images/lock.svg'
+import { getDetails } from 'use-places-autocomplete'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
+import Spinner from '../components/Spinner'
 
 function Card(props) {
+  const [isLoading, setLoading] = useState(true)
+  const [placeImage, setPlaceImage] = useState('')
+
+  useEffect(() => {
+    getPhoto(props.placeId, props.timer)
+  }, [])
+
+  const getPhoto = (placeId, itemTimer) => {
+    const parameter = {
+      placeId: placeId
+    }
+
+    const timer = itemTimer * 500
+
+    setTimeout(() => {
+      getDetails(parameter)
+        .then(details => {
+          const image = details.photos[0].getUrl({
+            maxWidth: 500,
+            maxHeight: 500
+          })
+
+          setLoading(false)
+          console.log('details', details)
+
+          setPlaceImage(image)
+          return placeImage
+        })
+        .catch(error => {
+          console.log('Error: ', error)
+        })
+    }, timer)
+  }
+
   return (
     <div className='card'>
       <a href={props.website} target='_blank' className='card-image'>
-        <img src={props.image} alt='' />
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <LazyLoadImage effect='blur' src={placeImage} alt='' />
+        )}
+
+        {/* <img src={faker.image.business()} alt='' /> */}
       </a>
       <div className='card-content'>
         <div className='heading'>

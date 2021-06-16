@@ -56,6 +56,7 @@ const AddSpaceForm = () => {
         method: 'POST',
         url: '/spaces',
         data: {
+          published_at: null,
           name: workspaceName,
           website,
           rating,
@@ -214,7 +215,9 @@ const AddSpaceForm = () => {
   return (
     <form className='form'>
       {success ? (
-        <h5 className='feedback-message'>Thanks for submitting a space</h5>
+        <h5 className='feedback-message'>
+          Thank you! We will review your submission shortly.
+        </h5>
       ) : hasError ? (
         <h5 className='feedback-message'>
           Oops! Something went wrong. Please try again

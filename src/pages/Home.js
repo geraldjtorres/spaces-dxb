@@ -145,7 +145,7 @@ function Home() {
         {isLoading ? (
           <Spinner />
         ) : (
-          spaces.map(item => {
+          spaces.map((item, index) => {
             return (
               <Card
                 image={item.img ? item.img : faker.image.business()}
@@ -158,6 +158,8 @@ function Home() {
                 noiseLevel={item.noise_level.name}
                 website={item.website}
                 directions={item.directions}
+                placeId={item.place_id}
+                timer={index}
                 wifiPassword={
                   item.wifi_password
                     ? item.wifi_password
