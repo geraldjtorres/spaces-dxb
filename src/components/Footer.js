@@ -5,8 +5,18 @@ import './Footer.css'
 // import './Header.css'
 
 function Footer() {
+  const footerStyles = {
+    maxWidth: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    height: 36,
+    padding: '0px 0 30px 0',
+    alignItems: 'center',
+    marginTop: 276
+  }
+
   return (
-    <div className='footerStyle'>
+    <footer style={footerStyles} className='footerStyle'>
       <div>
         <div className='footer-logo'>
           <img src={LogoSmall} alt='' />
@@ -23,7 +33,7 @@ function Footer() {
         </ul>
         <span>Copyright &copy; 2020 Spaces.ae</span>
       </div>
-    </div>
+    </footer>
   )
 }
 
