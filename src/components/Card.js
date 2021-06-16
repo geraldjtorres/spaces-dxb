@@ -33,13 +33,13 @@ function Card(props) {
           })
 
           setLoading(false)
-          console.log('details', details)
+          // console.log('details', details)
 
           setPlaceImage(image)
           return placeImage
         })
         .catch(error => {
-          console.log('Error: ', error)
+          // console.log('Error: ', error)
         })
     }, timer)
   }

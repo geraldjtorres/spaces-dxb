@@ -10,10 +10,8 @@ import { useStateValue } from '../StateProvider'
 import Spinner from '../components/Spinner'
 
 const AddSpaceForm = () => {
-  const [
-    { categories, sockets, internetSpeeds, noiseLevels },
-    dispatch
-  ] = useStateValue()
+  const [{ categories, sockets, internetSpeeds, noiseLevels }, dispatch] =
+    useStateValue()
   const [workspaceName, setWorkspaceName] = useState('')
   const [categoryType, setCategoryType] = useState('')
   const [rating, setRating] = useState('')
@@ -47,7 +45,7 @@ const AddSpaceForm = () => {
 
   const onHandleSubmit = async e => {
     e.preventDefault()
-    console.log('submit form')
+    // console.log('submit form')
 
     setLoading(true)
 
@@ -71,7 +69,7 @@ const AddSpaceForm = () => {
         }
       })
 
-      console.log('posted!', response)
+      // console.log('posted!', response)
 
       setTimeout(() => {
         setLoading(false)
@@ -100,17 +98,17 @@ const AddSpaceForm = () => {
       placeId: suggestion.place_id
     }
 
-    console.log('suggestion', suggestion)
+    // console.log('suggestion', suggestion)
 
     getDetails(parameter)
       .then(details => {
-        console.log('Details: ', details)
+        // console.log('Details: ', details)
         const image = details.photos[1].getUrl({
           maxWidth: 500,
           maxHeight: 500
         })
 
-        console.log('photo', image)
+        // console.log('photo', image)
 
         if (details.photos) setImg(image)
         if (details.name) setWorkspaceName(details.name)
